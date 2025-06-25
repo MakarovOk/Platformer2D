@@ -6,6 +6,7 @@ namespace Enemies
     [RequireComponent(typeof(Animator))]
     public sealed class Skeleton : PatrolBase
     {
+        private const string NameWalkParameter = "IsWalking";
         private Animator _animator;
         
         protected override void Awake()
@@ -18,9 +19,9 @@ namespace Enemies
         {
             base.Update();
             if(_rigidbody2D.velocity.x != 0)
-                _animator.SetBool("IsWalking", true);
+                _animator.SetBool(NameWalkParameter, true);
             else
-                _animator.SetBool("IsWalking", false);
+                _animator.SetBool(NameWalkParameter, false);
         }
     }
 }

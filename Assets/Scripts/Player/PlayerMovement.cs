@@ -7,6 +7,10 @@ namespace Player
     [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
     public sealed class PlayerMovement : MonoBehaviour
     {
+        private const string NameIsGroundParameter = "IsGround";
+        private const string NameJumpParameter = "Jump";
+        private const string NameRunParameter = "Run";
+        private const string AxisX = "Horizontal";
         private const float GroundCheckDistance = 0.1f;
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private float _jumpForce = 10f;
@@ -29,20 +33,20 @@ namespace Player
 
         private void Update()
         {
-            var moveX = Input.GetAxis("Horizontal");
+            var moveX = Input.GetAxis(AxisX);
             FlipSprite(moveX);
             Run(moveX);
             if (Input.GetKeyDown(_jumpKey) && IsGrounded())
                 Jump();
-            _animator.SetBool("IsGround", IsGrounded());
+            _animator.SetBool(NameIsGroundParameter, IsGrounded());
         }
 
         private void Run(float moveX)
         {
             if (moveX != 0)
-                _animator.SetBool("RunLR", true);
+                _animator.SetBool(NameRunParameter, true);
             else
-                _animator.SetBool("RunLR", false);
+                _animator.SetBool(NameRunParameter, false);
             var movement = new Vector2(moveX, transform.position.y);
             _rb.velocity = new Vector2(movement.x * _moveSpeed, _rb.velocity.y);
         }
@@ -56,7 +60,7 @@ namespace Player
         private void Jump()
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
-            _animator.SetTrigger("Jump");
+            _animator.SetTrigger(NameJumpParameter);
         }
 
         private bool IsGrounded()

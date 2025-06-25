@@ -23,7 +23,7 @@ namespace CoinCollect
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out PlayerMovement player))
+            if (collision.TryGetComponent(out PlayerMovement _))
             {
                 OnCoinCollected?.Invoke();
                 Destroy(gameObject);
