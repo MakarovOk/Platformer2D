@@ -30,6 +30,7 @@ namespace Player
             _health = health;
             _healthSlider.value = _health.CurrentHealth;
             _healthSlider.maxValue = _health.MaxHealth;
+            _targetValue = _health.CurrentHealth;
         }
     }
 }

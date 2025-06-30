@@ -18,7 +18,6 @@ namespace Enemies
         private int _directionSign;  
         protected Rigidbody2D _rigidbody2D;
 
-
         protected virtual void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
