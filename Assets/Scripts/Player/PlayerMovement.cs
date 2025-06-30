@@ -9,7 +9,7 @@ namespace Player
     {
         private const string NameIsGroundParameter = "IsGround";
         private const string NameJumpParameter = "Jump";
-        private const string NameRunParameter = "Run";
+        private const string NameRunParameter = "RunLR";
         private const string AxisX = "Horizontal";
         private const float GroundCheckDistance = 0.1f;
         [SerializeField] private float _moveSpeed = 5f;
